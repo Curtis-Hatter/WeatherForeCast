@@ -1,6 +1,7 @@
 var today = new Date();
 var cities = [];
 
+//Getting local storage if any
 if (localStorage.getItem("cities") !== null) {
     cities = JSON.parse(localStorage.getItem("cities"));
     for (var i = 0; i < cities.length; i++) {
@@ -10,6 +11,7 @@ if (localStorage.getItem("cities") !== null) {
     }
 }
 
+//Weather Report generated from ajax call
 createWeatherReport = function (cityName) {
     // console.log(cityName);
     var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=5d906c5cc1a9d830abee251b8c9b4b0a";
@@ -22,9 +24,11 @@ createWeatherReport = function (cityName) {
             lat = url.coord.lat;
             lon = url.coord.lon;
             queryURL = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly,alerts&units=imperial&appid=5d906c5cc1a9d830abee251b8c9b4b0a";
+            //weather forecast 
             createWeatherForecast(queryURL);
             $("h3").text(cityName + " " + today.toLocaleDateString());
         },
+        //error handling
         error: function () {
             // console.log(error);
             // console.log(request);
@@ -33,6 +37,7 @@ createWeatherReport = function (cityName) {
         }
     });
 }
+//generate weather forecast using for loop
 createWeatherForecast = function (queryURL) {
     $.ajax({
         url: queryURL,
@@ -69,6 +74,7 @@ createWeatherForecast = function (queryURL) {
     })
 }
 
+//UV Color assignment based of uv number
 colorassignment = function (number) {
     if (number <= 2) {
         $("#uvi").attr("class", "onetwo");
@@ -84,17 +90,20 @@ colorassignment = function (number) {
     }
 }
 
+//Setting up Date objects
 Date.prototype.addDays = function (days) {
     var date = new Date(this.valueOf());
     date.setDate(date.getDate() + days);
     return date;
 }
 
+//Search history stored in local storage
 populateHistory = function (city) {
     cities.push(city);
     localStorage.setItem("cities", JSON.stringify(cities));
 }
 
+//Click handling on history searchbar button
 $(".city-search").on("click", function () {
     var userCityChoice = $(".form-control").val();
     // console.log(userCityChoice);
@@ -106,6 +115,7 @@ $(".city-search").on("click", function () {
     populateHistory(userCityChoice);
 })
 
+//Click handling on actual history
 $(document).ready(function () {
     $(".city").on("click", function () {
         var userCityChoice = $(this).text();
@@ -114,7 +124,7 @@ $(document).ready(function () {
     })
 })
 
-
+//Click handling on header
 $(".header").click(function () {
     // Event.stopPropation();
     var userCityChoice = "Riverside";
@@ -128,10 +138,3 @@ $(".header").click(function () {
     createWeatherReport(userCityChoice);
 })
 
-//SUPER QUESTions, click not responding?
-// $(".header").click(function () {
-//     // Event.stopPropation();
-//     var userCityChoice = $(this).text();
-//     console.log(userCityChoice);
-//     createWeatherReport(userCityChoice);
-// })
