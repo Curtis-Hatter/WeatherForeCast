@@ -1,0 +1,88 @@
+.header {
+    background-color: rgb(60 59 59);
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+    color: honeydew;
+}
+
+.citySearch {
+    margin-top: -5px;
+    background-color: #d8dee4ab;
+    border-bottom-right-radius: 2px;
+    padding-left: 1.5%;
+    padding-bottom: 30px;
+}
+
+#Search {
+    border-radius: 5px;
+}
+
+.input-group {
+    margin-bottom: 10px;
+}
+
+#cities {
+    font-size: 24px;
+    background-color: white;
+    color: gray;
+    /* padding: 12px; */
+    border-color: grey;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    /* margin-bottom: 10px; */
+}
+
+.city {
+    padding: 12px 12px 12px 20px;
+    border-color: grey;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.stats {
+    padding: 20px;
+    border-color: grey;
+    border-width: 1px 0px 1px 1px;
+    border-style: solid;
+    border-radius: 5px 0px 5px 5px;
+    margin: 15px 0px 15px 0px;
+    font-size: large;
+}
+
+h3, h4 {
+    font-size: 36px;
+}
+
+.daily-weather {
+    border-color: #007bff;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    margin: 15px;
+    padding: 10px;
+}
+
+span#uvi {
+    color: white;
+    padding: 5px;
+}
+
+.onetwo {
+    background-color: #028b0d;
+}
+
+.threefive {
+    background-color: yellow;
+}
+
+.sixseven {
+    background-color: orange;
+}
+
+.aboveeight {
+    background-color: red;
+}
