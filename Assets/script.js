@@ -14,7 +14,7 @@ if (localStorage.getItem("cities") !== null) {
 //Weather Report generated from ajax call
 createWeatherReport = function (cityName) {
     // console.log(cityName);
-    var queryURL = "http://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=5d906c5cc1a9d830abee251b8c9b4b0a";
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&units=imperial&appid=5d906c5cc1a9d830abee251b8c9b4b0a";
     var lat = 0;
     var lon = 0;
     $.ajax({
@@ -44,7 +44,7 @@ createWeatherForecast = function (queryURL) {
         method: "GET"
     }).then(function (response) {
         // console.log(response.current.uvi);
-        $("h3").append($("<img>").attr({ "src": "http://openweathermap.org/img/w/" + response.daily[0].weather[0].icon + ".png", "alt": "weather icon" }));
+        $("h3").append($("<img>").attr({ "src": "https://openweathermap.org/img/w/" + response.daily[0].weather[0].icon + ".png", "alt": "weather icon" }));
         $("#Temp").text("Temperature: " + response.current.temp + " ℉");
         $("#humid").text("Humidity: " + response.current.humidity + "%");
         $("#wind").text("Wind Speed: " + response.current.wind_speed + " MPH");
@@ -60,7 +60,7 @@ createWeatherForecast = function (queryURL) {
             var foreCastIcon = $("<img>");
 
             foreCastStats.addClass("daily-weather col-auto");
-            foreCastIcon.attr({ "src": "http://openweathermap.org/img/w/" + response.daily[i].weather[0].icon + ".png", "alt": "weather icon" })
+            foreCastIcon.attr({ "src": "https://openweathermap.org/img/w/" + response.daily[i].weather[0].icon + ".png", "alt": "weather icon" })
             foreCastDate.text(today.addDays(i).toLocaleDateString());
             foreCastTemp.text("Temp: " + response.daily[i].temp.day + " ℉");
             foreCastHumid.text("Humidity: " + response.daily[i].humidity + "%");
